@@ -1,5 +1,7 @@
 import streamlit as st
-#import joblib 
+from Home import home
+from TextClassification import TextClassification
+from Questionnaire import Questionnaire
 
 # Create a session state to store the page selection
 class SessionState:
@@ -7,42 +9,29 @@ class SessionState:
         self.page = "Home"
 
 state = SessionState()
-#model = joblib.load("C:/Users/aizad/OneDrive/Desktop/text_classification.py")
+
 # Define different pages
-def home():
-    st.title("Home Page")
-    st.write("Welcome to the Depression Indicator!")
-
-def TextClassification():
-    st.title("Text Classification")
-    st.write("Welcome to Text Classification!")
-
-def Questionnaire():
-    st.title("Questionnaire")
-    st.write("Welcome to the Questionnaire!")
+pages = {
+    "Home": home,
+    "Text Classification": TextClassification,
+    "Questionnaire": Questionnaire
+}
 
 # Render the selected page based on the session state
 def render_page():
-    if state.page == "Home":
-        home()
-    elif state.page == "Text Classification":
-        TextClassification()
-    elif state.page == "Questionnaire":
-        Questionnaire()
+    if state.page in pages:
+        pages[state.page]()
 
 # Main App
 def main():
     st.sidebar.title("Menu")
-    pages = ["Home","Text Classification", "Questionnaire"]
-    selected_page = st.sidebar.radio("Go to", pages, index=0)
+    selected_page = st.sidebar.radio("Go to", tuple(pages.keys()))
     state.page = selected_page
 
     render_page()
 
-
-
 if __name__ == "__main__":
     main()
-    print("helo world")
+
 
 
