@@ -1,5 +1,5 @@
 import streamlit as st
-from HomePage import home
+from Home import home
 from TextClassification import TextClassification
 from Questionnaire import Questionnaire
 
