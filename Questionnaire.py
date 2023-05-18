@@ -1,8 +1,15 @@
 import streamlit as st
 
-def Questionnaire():
-    st.title("Questionnaire")
-    st.write("Welcome come to QUestionnaire!")
+class QuestionnairePage:
+    def __init__(self):
+        pass
 
-if __name__ == 'main':
-    Questionnaire()
+    def render(self):
+        st.title("Questionnaire Page")
+        st.write("This is the questionnaire page.")
+        # Add your questionnaire page content here
+
+
+# Instantiate the QuestionnairePage class
+Questionnaire = QuestionnairePage()
+
